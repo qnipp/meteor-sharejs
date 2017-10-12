@@ -61,8 +61,8 @@ Package.onUse(function (api) {
 
   api.use(['ecmascript', 'modules', 'templating']);
 
-  api.use("mizzao:sharejs@0.9.0");
-  api.imply("mizzao:sharejs");
+  api.use("edemaine:sharejs@0.9.0");
+  api.imply("edemaine:sharejs");
 
   // Add Ace files as assets that can be loaded by the client later
   var codemirrorData = getFilesFromFolder("mizzao:sharejs-codemirror", ".npm/package/node_modules/codemirror");

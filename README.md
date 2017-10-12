@@ -6,12 +6,15 @@ Meteor smart package for transparently adding [ShareJS](https://github.com/share
 
 This package is only tested for meteor 1.3 or later
 
+This is a fork of [mizzao:sharejs](https://github.com/mizzao/meteor-sharejs)
+to experiment with fixes and/or additional features.
+
 ## Install
 
 For vanilla ShareJS with text only:
 
 ```
-$ meteor add mizzao:sharejs
+$ meteor add edemaine:sharejs
 ```
 
 For ShareJS with the Ace editor

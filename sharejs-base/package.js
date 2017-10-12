@@ -1,8 +1,8 @@
 Package.describe({
-  name: "mizzao:sharejs",
+  name: "edemaine:sharejs",
   summary: "server (& client library) to allow concurrent editing of any kind of content",
-  version: "0.10.1",
-  git: "https://github.com/mizzao/meteor-sharejs.git"
+  version: "0.10.3-alpha.1",
+  git: "https://github.com/edemaine/meteor-sharejs.git"
 });
 
 Npm.depends({
@@ -39,7 +39,7 @@ Package.onTest(function (api) {
     'test-helpers'
   ]);
 
-  api.use("mizzao:sharejs");
+  api.use("edemaine:sharejs");
 
   api.addFiles('tests/server_test.js', 'server');
 });
