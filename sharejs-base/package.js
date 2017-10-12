@@ -14,7 +14,7 @@ Npm.depends({
 Package.onUse(function (api) {
   api.versionsFrom("1.3");
 
-  api.use(['coffeescript', 'underscore']);
+  api.use(['coffeescript', 'ecmascript', 'underscore']);
   api.use(['handlebars', 'templating'], 'client');
   api.use(['mongo-livedata', 'routepolicy', 'webapp'], 'server');
 
