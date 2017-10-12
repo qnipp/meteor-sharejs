@@ -3,7 +3,7 @@
  */
 import { Template } from 'meteor/templating'
 import { Blaze } from 'meteor/blaze' 
-import { ShareJSConnector } from 'meteor/mizzao:sharejs'
+import { ShareJSConnector } from 'meteor/edemaine:sharejs'
 
 import CodeMirror from 'codemirror';
 import 'codemirror/addon/fold/foldcode';
