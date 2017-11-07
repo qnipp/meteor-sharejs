@@ -1,7 +1,7 @@
 Package.describe({
   name: "edemaine:sharejs-codemirror",
   summary: "ShareJS with the CodeMirror Editor",
-  version: "5.22.1-alpha.2",
+  version: "5.22.1-alpha.3",
   git: "https://github.com/edemaine/meteor-sharejs.git"
 });
 
@@ -61,7 +61,7 @@ Package.onUse(function (api) {
 
   api.use(['ecmascript', 'modules', 'templating']);
 
-  api.use("edemaine:sharejs@0.10.3-alpha.1");
+  api.use("edemaine:sharejs@0.10.3-alpha.2");
   api.imply("edemaine:sharejs");
 
   // Add Ace files as assets that can be loaded by the client later
