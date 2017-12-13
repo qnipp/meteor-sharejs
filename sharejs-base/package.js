@@ -1,7 +1,7 @@
 Package.describe({
   name: "edemaine:sharejs",
   summary: "server (& client library) to allow concurrent editing of any kind of content",
-  version: "0.10.3-alpha.2",
+  version: "0.10.3-alpha.3",
   git: "https://github.com/edemaine/meteor-sharejs.git"
 });
 
