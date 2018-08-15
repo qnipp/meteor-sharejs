@@ -6,10 +6,20 @@ import { Template } from 'meteor/templating'
 import { Blaze } from 'meteor/blaze'
 import { ShareJSConnector } from 'meteor/mizzao:sharejs'
 
-require('ace-builds/src-noconflict/ace');
-ace.require('ace/config').set('basePath', '/packages/mizzao_sharejs-ace/.npm/package/node_modules/ace-builds/src-noconflict/');
+try {
+  require('ace-builds/src-noconflict/ace');
+} catch (e) {
+  if (e.toString().match("Cannot find module")) {
+    console.error("Could not load NPM module `ace-builds`, which is a peer " +
+      "dependency. You need to `meteor npm install --save ace-builds`.");
+    return;
+  } else {
+    throw e;
+  }
+}
+
 UndoManager = ace.require('ace/undomanager').UndoManager;
-import './ace'
+require('./ace')
 
 class ShareJSAceConnector extends ShareJSConnector {
     
