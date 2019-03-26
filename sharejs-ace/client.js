@@ -4,10 +4,10 @@
 
 import { Template } from 'meteor/templating'
 import { Blaze } from 'meteor/blaze'
-import { ShareJSConnector } from 'meteor/mizzao:sharejs'
+import { ShareJSConnector } from 'meteor/edemaine:sharejs'
 
 require('ace-builds/src-noconflict/ace');
-ace.require('ace/config').set('basePath', '/packages/mizzao_sharejs-ace/.npm/package/node_modules/ace-builds/src-noconflict/');
+ace.require('ace/config').set('basePath', '/packages/qnipp_sharejs-ace/.npm/package/node_modules/ace-builds/src-noconflict/');
 UndoManager = ace.require('ace/undomanager').UndoManager;
 import './ace'
 

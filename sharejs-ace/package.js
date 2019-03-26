@@ -1,8 +1,8 @@
 Package.describe({
-  name: "mizzao:sharejs-ace",
+  name: "qnipp:sharejs-ace",
   summary: "ShareJS with the Ace Editor",
   version: "1.4.1",
-  git: "https://github.com/mizzao/meteor-sharejs.git"
+  git: "https://github.com/qnipp/meteor-sharejs.git"
 });
 
 Npm.depends({
@@ -43,7 +43,6 @@ function getFilesFromFolder(packageName, folder){
 
   var isRunningFromApp = fs.existsSync(path.resolve("packages"));
   var packagePath = isRunningFromApp ? path.resolve("packages", packageName) : "";
-  console.log(packagePath);
 
   packagePath = path.resolve(packagePath);
   // chdir to our package directory
@@ -60,14 +59,18 @@ Package.onUse(function (api) {
 
   api.use(['ecmascript', 'modules', 'templating']);
 
-  api.use("mizzao:sharejs@0.9.0");
-  api.imply("mizzao:sharejs");
+  api.use("edemaine:sharejs@0.10.3-alpha.2");
+  api.imply("edemaine:sharejs");
 
   var _ = Npm.require("underscore");
 
   // Add Ace files as assets that can be loaded by the client later
-  var aceSettings = getFilesFromFolder("mizzao:sharejs-ace", ".npm/package/node_modules/ace-builds/src-noconflict");
-  api.addAssets(aceSettings, 'client');
+  try {
+    var aceSettings = getFilesFromFolder("qnipp:sharejs-ace", ".npm/package/node_modules/ace-builds/src-noconflict");
+    api.addAssets(aceSettings, 'client');  
+  } catch(e) {
+    console.log(`Ignoring ${e}`);
+  }
 
   api.mainModule('client.js', 'client');
   api.addFiles([
