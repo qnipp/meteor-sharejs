@@ -10,6 +10,7 @@ export const ShareJS = {};
 
 // Using special options from https://github.com/share/ShareJS/blob/master/src/server/index.coffee
 const options = _.extend({
+    useMeteorConnection: true,
     staticpath: null,
     db: {
         type: 'none', // Default option is none as it throws errors in meteor 1.4 due to issues in upstream sharejs
@@ -41,10 +42,18 @@ switch (options.db.type) {
     default:
         Meteor._debug("ShareJS: using unsupported db type " + options.db.type + ", falling back to in-memory.");
 }
-//Declare the path that ShareJS uses to Meteor
-RoutePolicy.declare('/channel/', 'network');
-// Attach the sharejs REST and bcsocket interfaces as middleware to the meteor connect server
-Npm.require('share').server.attach(WebApp.connectHandlers, options);
+
+if (options.useMeteorConnection) {
+    Npm.require('share').server.attach(Meteor.server.stream_server, options);
+    ShareJS.model = Meteor.server.stream_server.model;
+    
+} else {
+    //Declare the path that ShareJS uses to Meteor
+    RoutePolicy.declare('/channel/', 'network');
+    // Attach the sharejs REST and bcsocket interfaces as middleware to the meteor connect server
+    Npm.require('share').server.attach(WebApp.connectHandlers, options);
+    ShareJS.model = WebApp.connectHandlers.model;
+}
 
 
 /*
@@ -52,7 +61,6 @@ Npm.require('share').server.attach(WebApp.connectHandlers, options);
  https://github.com/share/ShareJS/blob/v0.6.2/src/server/index.coffee
  */
 
-ShareJS.model = WebApp.connectHandlers.model;
 // A convenience function for creating a document on the server.
 ShareJS.initializeDoc = function(docName, content) {
     return ShareJS.model.create(docName, 'text', {}, function(err) {
