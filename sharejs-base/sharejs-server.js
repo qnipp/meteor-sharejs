@@ -10,7 +10,7 @@ export const ShareJS = {};
 
 // Using special options from https://github.com/share/ShareJS/blob/master/src/server/index.coffee
 const options = _.extend({
-    staticPath: null,
+    staticpath: null,
     db: {
         type: 'none', // Default option is none as it throws errors in meteor 1.4 due to issues in upstream sharejs
         opsCollectionPerDoc: false // A doc/op indexed collection keeps the namespace cleaner in a Meteor app.
